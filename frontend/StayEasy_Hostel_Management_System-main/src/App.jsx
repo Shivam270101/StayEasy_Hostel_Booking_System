@@ -187,8 +187,8 @@ const App = () => {
         {isLoggedIn && <ProfileSidebar setIsSidebarOpen={setIsSidebarOpen} />}
         <div style={{ marginLeft: isLoggedIn ? "0px" : "0px", padding: "0px" }}>
           <Routes>
-            <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/" element={<Home isLoggedIn={isLoggedIn} isSidebarOpen={isSidebarOpen} />} />
+            <Route path="/about" element={<About isLoggedIn={isLoggedIn} isSidebarOpen={isSidebarOpen} />} />
             <Route
               path="/login"
               element={

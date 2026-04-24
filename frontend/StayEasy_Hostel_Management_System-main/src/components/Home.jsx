@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import logo from "../logo.svg";
 
 const Home = ({ isSidebarOpen, isLoggedIn }) => {
   const navigate = useNavigate();
@@ -29,8 +30,23 @@ const Home = ({ isSidebarOpen, isLoggedIn }) => {
         transition={{ duration: 1 }}
         className="container text-center text-white position-relative z-1"
       >
+        {/* Logo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="mb-4"
+        >
+          <img
+            src={logo}
+            alt="StayEasy Logo"
+            style={{ width: "150px", height: "150px" }}
+            className="mb-3"
+          />
+        </motion.div>
+
         <h1 className="display-3 fw-bold mb-3">Find Your Perfect Stay</h1>
-        <p className="lead">
+        <p className="lead mb-4">
           Search hostels or PGs in your preferred location or near you.
         </p>
 
@@ -53,6 +69,31 @@ const Home = ({ isSidebarOpen, isLoggedIn }) => {
           >
             <Search className="me-2" /> Search
           </button>
+        </motion.div>
+
+        {/* Additional Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 1 }}
+        >
+          <p className="mb-4">
+            Join thousands of students and travelers who trust StayEasy for their accommodation needs.
+          </p>
+          <div className="d-flex justify-content-center gap-3">
+            <button
+              className="btn btn-outline-light rounded-pill px-4"
+              onClick={() => navigate("/about")}
+            >
+              Learn More
+            </button>
+            <button
+              className="btn btn-primary rounded-pill px-4"
+              onClick={() => navigate("/signup")}
+            >
+              Get Started
+            </button>
+          </div>
         </motion.div>
       </motion.div>
     </div>
