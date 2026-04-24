@@ -17,7 +17,7 @@ const SendOtp = ({ setIsLoggedIn, isLoggedIn, isSidebarOpen }) => {
 
     try {
       setLoading(true);
-      await UserService.verifyOtp(user.email, parseInt(otp));
+      await UserService.verifyOtp(user.email, otp);
 
       if (location.state?.newuser) {
         if (user) {
