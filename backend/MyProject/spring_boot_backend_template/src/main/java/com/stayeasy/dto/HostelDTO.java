@@ -19,13 +19,5 @@ public class HostelDTO {
     private double latitude;
     private double distance;
     
-	public HostelDTO(Long hostel_id, String hostelName, String address, double longitude, double latitude, double distance) {
-		super();
-		this.hostel_id = hostel_id;
-		this.hostelName = hostelName;
-		this.address = address;
-		this.longitude = longitude;
-		this.latitude = latitude;
-		this.distance = distance;
-	} 
+
 }

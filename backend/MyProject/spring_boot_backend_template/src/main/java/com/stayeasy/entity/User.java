@@ -65,7 +65,7 @@ public class User implements UserDetails {
 	@JoinColumn(name = "location_id", referencedColumnName = "location_id")
 	private UserLocation location;
 
-	@ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnore
 	private List<Room> sharedrooms;
 
@@ -119,14 +119,5 @@ public class User implements UserDetails {
 		return password;
 	}
 
-	public Long getUserId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Object getUsertype() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

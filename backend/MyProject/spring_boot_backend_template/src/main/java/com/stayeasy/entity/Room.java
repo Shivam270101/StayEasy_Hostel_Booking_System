@@ -52,7 +52,6 @@ public class Room {
 			 )
 			 private List<User> user;
 		
-			@OneToMany(mappedBy = "room",cascade = CascadeType.ALL)
-			private List<User> users;
+
 
 }
