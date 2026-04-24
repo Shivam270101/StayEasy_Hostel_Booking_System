@@ -51,6 +51,64 @@ public class Room {
 			    inverseJoinColumns = @JoinColumn(name = "user_id")
 			 )
 			 private List<User> user;
+
+			public Long getRoom_id() {
+				return room_id;
+			}
+
+			public void setRoom_id(Long room_id) {
+				this.room_id = room_id;
+			}
+
+			public String getRoomnumber() {
+				return roomnumber;
+			}
+
+			public void setRoomnumber(String roomnumber) {
+				this.roomnumber = roomnumber;
+			}
+
+			public Hostel getHostel() {
+				return hostel;
+			}
+
+			public void setHostel(Hostel hostel) {
+				this.hostel = hostel;
+			}
+
+			public int getSharing() {
+				return sharing;
+			}
+
+			public void setSharing(int sharing) {
+				this.sharing = sharing;
+			}
+
+			public double getPrice() {
+				return price;
+			}
+
+			public void setPrice(double price) {
+				this.price = price;
+			}
+
+			public boolean isAvailable() {
+				return available;
+			}
+
+			public void setAvailable(boolean available) {
+				this.available = available;
+			}
+
+			public List<User> getUser() {
+				return user;
+			}
+
+			public void setUser(List<User> user) {
+				this.user = user;
+			}
+			 
+			 
 		
 
 

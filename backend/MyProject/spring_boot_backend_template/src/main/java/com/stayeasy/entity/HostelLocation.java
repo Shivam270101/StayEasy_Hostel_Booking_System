@@ -38,5 +38,31 @@ public class HostelLocation {
     @OneToOne(mappedBy = "location", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Hostel hostel;
 
+	public Long getHostel_location_id() {
+		return hostel_location_id;
+	}
+
+	public void setHostel_location_id(Long hostel_location_id) {
+		this.hostel_location_id = hostel_location_id;
+	}
+
+	public Point getLocation() {
+		return location;
+	}
+
+	public void setLocation(Point location) {
+		this.location = location;
+	}
+
+	public Hostel getHostel() {
+		return hostel;
+	}
+
+	public void setHostel(Hostel hostel) {
+		this.hostel = hostel;
+	}
+    
+    
+
     
 }

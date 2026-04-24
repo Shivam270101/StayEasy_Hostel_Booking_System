@@ -24,8 +24,9 @@ import com.stayeasy.entity.UserType;
 @Service
 @Transactional
 public class AuthenticationService {
-	@Autowired
+	
     private final UserDao userRepository;
+
 	@Autowired
 	private ModelMapper mapper;
     

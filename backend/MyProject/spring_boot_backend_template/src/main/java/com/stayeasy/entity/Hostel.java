@@ -45,5 +45,54 @@ private HostelLocation location; // Fixed hostel location
 @OneToMany(mappedBy = "hostel", cascade = CascadeType.ALL,orphanRemoval = true ,fetch = FetchType.EAGER)
 private List<Room> rooms;
 
+public Long getHostel_id() {
+	return hostel_id;
+}
+
+public void setHostel_id(Long hostel_id) {
+	this.hostel_id = hostel_id;
+}
+
+public User getOwner() {
+	return owner;
+}
+
+public void setOwner(User owner) {
+	this.owner = owner;
+}
+
+public String getHostelname() {
+	return hostelname;
+}
+
+public void setHostelname(String hostelname) {
+	this.hostelname = hostelname;
+}
+
+public String getAddress() {
+	return address;
+}
+
+public void setAddress(String address) {
+	this.address = address;
+}
+
+public HostelLocation getLocation() {
+	return location;
+}
+
+public void setLocation(HostelLocation location) {
+	this.location = location;
+}
+
+public List<Room> getRooms() {
+	return rooms;
+}
+
+public void setRooms(List<Room> rooms) {
+	this.rooms = rooms;
+}
+
+
 
 }
