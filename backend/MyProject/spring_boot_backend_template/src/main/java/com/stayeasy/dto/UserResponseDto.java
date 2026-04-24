@@ -16,5 +16,13 @@ public class UserResponseDto {
     private String phoneno;
     private String role;
     private String token;// "USER" or "OWNER"
+	public void setToken(String jwtToken) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void setRole(String string) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 

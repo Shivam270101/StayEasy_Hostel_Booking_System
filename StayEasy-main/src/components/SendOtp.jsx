@@ -1,23 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import UserService from "../Services/UserService";
 
 const SendOtp = ({ setIsLoggedIn, isLoggedIn, isSidebarOpen }) => {
   const [loading, setLoading] = useState(false);
   const [otp, setOtp] = useState("");
+  const [error, setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-  const user = location.state?.User || {};
+  const user = location.state?.User || null;
+
+  // Redirect to login if no user data is present
+  useEffect(() => {
+    if (!user || !user.email) {
+      alert("Please login first");
+      navigate("/login");
+    }
+  }, [user, navigate]);
 
   const handleVerifyOtp = async () => {
     if (!otp.trim()) {
-      alert("Please enter OTP");
+      setError("Please enter OTP");
       return;
     }
 
+    if (otp.length !== 6) {
+      setError("OTP must be 6 digits");
+      return;
+    }
+
+    setError("");
+
     try {
       setLoading(true);
-      await UserService.verifyOtp(user.email, parseInt(otp));
+      // Don't use parseInt to preserve leading zeros
+      const otpValue = otp.trim();
+      await UserService.verifyOtp(user.email, otpValue);
 
       if (location.state?.newuser) {
         if (user) {
@@ -51,6 +69,11 @@ const SendOtp = ({ setIsLoggedIn, isLoggedIn, isSidebarOpen }) => {
     }
   };
 
+  // Don't render if user is not available
+  if (!user || !user.email) {
+    return null;
+  }
+
   return (
     <div
       className="container mt-5"
@@ -63,6 +86,8 @@ const SendOtp = ({ setIsLoggedIn, isLoggedIn, isSidebarOpen }) => {
       <p className="text-muted text-center">
         OTP sent to <strong>{user.email}</strong>
       </p>
+
+      {error && <div className="alert alert-danger">{error}</div>}
 
       <input
         type="text"

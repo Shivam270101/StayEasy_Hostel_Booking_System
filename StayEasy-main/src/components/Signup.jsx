@@ -104,7 +104,7 @@ const Signup = ({ setIsLoggedIn, isLoggedIn, isSidebarOpen }) => {
             width: "420px",
             maxHeight: "85vh",
             overflowY: "auto",
-            borderRadius: "12px",
+            borderRadius: "15px",
             border: "none",
           }}
         >
@@ -203,7 +203,7 @@ const Signup = ({ setIsLoggedIn, isLoggedIn, isSidebarOpen }) => {
                 type="password"
                 name="confirmPassword"
                 value={formData.confirmPassword}
-                onChange={handleChange}
+                onChange={handleChange} 
                 className="form-control"
                 placeholder="Confirm password"
                 required

@@ -1,8 +1,8 @@
 import axios from "axios";
 import { Component } from "react";
 
-const BASE_URL = "http://localhost:8080/auth/";
-const OTP_URL = "http://localhost:8080/api/otp/";
+const BASEURL = "http://localhost:8080/auth/";
+const OTPURL = "http://localhost:8080/api/otp/";
 const myheader = { "Content-Type": "application/json" };
 
 class HostelService extends Component {
@@ -12,4 +12,4 @@ class HostelService extends Component {
   }
 }
 
-export default new HostelService();
+export default HostelService();

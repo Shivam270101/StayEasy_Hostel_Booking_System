@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Booking.css"; // Import custom styling
-import { useNavigate, useParams } from "react-router-dom"; // To get the hostel ID
-import { LogIn } from "lucide-react";
+import "../css/Booking.css";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Booking = ({ isSidebarOpen }) => {
-  const { hostelId } = useParams(); // Get hostel ID from URL
+  const { hostelId } = useParams();
   const navigate = useNavigate();
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
+
   console.log("hostel id = " + hostelId);
 
   useEffect(() => {
@@ -18,10 +18,9 @@ const Booking = ({ isSidebarOpen }) => {
   const fetchRooms = async () => {
     try {
       setLoading(true);
-      const response = await fetch(
-        `http://localhost:8080/api/rooms/${hostelId}`
-      );
+      const response = await fetch(`http://localhost:8080/api/rooms/${hostelId}`);
       if (!response.ok) throw new Error("Failed to fetch rooms");
+
       const data = await response.json();
       setRooms(data);
     } catch (error) {
@@ -31,16 +30,9 @@ const Booking = ({ isSidebarOpen }) => {
     }
   };
 
-  //   const bookRoom = (room) => {
-  //     alert(`Room ${room.roomNumber} booked successfully!`);
-  //     // TODO: Send booking request to backend
-  //   };
-
   // Group rooms by sharing type
   const groupedRooms = rooms.reduce((acc, room) => {
-    if (!acc[room.sharing]) {
-      acc[room.sharing] = [];
-    }
+    if (!acc[room.sharing]) acc[room.sharing] = [];
     acc[room.sharing].push(room);
     return acc;
   }, {});
@@ -49,7 +41,7 @@ const Booking = ({ isSidebarOpen }) => {
     <div
       className="container mt-4"
       style={{
-        marginLeft: isSidebarOpen ? "250px" : "60px", // Prevent overlap
+        marginLeft: isSidebarOpen ? "250px" : "60px",
         padding: "20px",
         transition: "margin-left 0.3s ease-in-out",
         width: "1000px",
@@ -75,6 +67,7 @@ const Booking = ({ isSidebarOpen }) => {
                   {sharing}-Sharing Rooms
                 </button>
               </h2>
+
               <div
                 id={`collapse${index}`}
                 className="accordion-collapse collapse"
@@ -87,12 +80,9 @@ const Booking = ({ isSidebarOpen }) => {
                       <div className="col-md-4 mb-3" key={room.room_id}>
                         <div className="room-card">
                           <h5>Room {room.roomNumber}</h5>
-                          <p>
-                            <strong>Price:</strong> ₹{room.price} / month
-                          </p>
-                          <p>
-                            <strong>Sharing:</strong> {room.sharing}-Person
-                          </p>
+                          <p><strong>Price:</strong> ₹{room.price} / month</p>
+                          <p><strong>Sharing:</strong> {room.sharing}-Person</p>
+
                           <button
                             className="book-now"
                             onClick={() =>
@@ -109,6 +99,7 @@ const Booking = ({ isSidebarOpen }) => {
                   </div>
                 </div>
               </div>
+
             </div>
           ))}
         </div>

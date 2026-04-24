@@ -45,25 +45,5 @@ private HostelLocation location; // Fixed hostel location
 @OneToMany(mappedBy = "hostel", cascade = CascadeType.ALL,orphanRemoval = true ,fetch = FetchType.EAGER)
 private List<Room> rooms;
 
-//public void addroom(Room room) {
-//	this.rooms.add(room);
-//	room.setHostel(this);
-//}
-//public void removeroom(Room room) {
-//	rooms.remove(room);
-//	room.setHostel(this);
-//}
-//@OneToMany(mappedBy = "hostel",cascade = CascadeType.ALL, fetch = FetchType.LAZY,orphanRemoval = true)
-//private List<Booking> bookings;
-
-//@OneToMany(mappedBy = "hostel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//private List<Review> reviews;
-
-//@OneToMany(mappedBy = "hostel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//private List<Record> records;
-
-//@OneToMany(mappedBy = "hostel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//private List<User> users;
-
 
 }

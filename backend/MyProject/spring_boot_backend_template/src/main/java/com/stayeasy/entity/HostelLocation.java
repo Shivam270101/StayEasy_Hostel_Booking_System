@@ -38,5 +38,5 @@ public class HostelLocation {
     @OneToOne(mappedBy = "location", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Hostel hostel;
 
-    // Getters and Setters
+    
 }

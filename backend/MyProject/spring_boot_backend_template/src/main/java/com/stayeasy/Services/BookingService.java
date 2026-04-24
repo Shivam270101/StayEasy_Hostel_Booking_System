@@ -40,9 +40,9 @@ public class BookingService {
     private HostelDao hostelRepository;
 
     public BookingResponseDto bookRoom(BookingDto bookingdetails ) {
-        Optional<User> userOpt = userRepository.findById(bookingdetails.getUser_id());
-        Optional<Room> roomOpt = roomRepository.findById(bookingdetails.getRoom_id());
-        Optional<Hostel> hostelOpt = hostelRepository.findById(bookingdetails.getHostel_id());
+        Optional<User> userOpt = userRepository.findById(bookingdetails.getUserId());
+        Optional<Room> roomOpt = roomRepository.findById(bookingdetails.getRoomId());
+        Optional<Hostel> hostelOpt = hostelRepository.findById(bookingdetails.getHostelId());
 
         if (userOpt.isPresent() && roomOpt.isPresent() && hostelOpt.isPresent()) {
             Booking booking = new Booking();
@@ -136,52 +136,3 @@ public class BookingService {
 
 
 
-//package com.stayeasy.Services;
-//
-//import com.stayeasy.entity.Booking;
-//import com.stayeasy.entity.BookingStatus;
-//
-//import jakarta.transaction.Transactional;
-//
-//import com.stayeasy.dao.BookingDao;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Service;
-//import java.time.LocalDateTime;
-//import java.util.List;
-//import java.util.Optional;
-//
-//@Service
-//@Transactional
-//public class BookingService {
-//
-//    @Autowired
-//    private BookingDao bookingDao;
-//
-//    public Booking createBooking(Booking booking) {
-//        booking.setBookingDate(LocalDateTime.now());
-//        booking.setStatus(BookingStatus.PENDING);
-//        return bookingDao.save(booking);
-//    }
-//
-//    public List<Booking> getAllBookings() {
-//        return bookingDao.findAll();
-//    }
-//
-//    public Optional<Booking> getBookingById(Long bookingId) {
-//        return bookingDao.findById(bookingId);
-//    }
-//
-//    public Booking updateBooking(Long bookingId, Booking updatedBooking) {
-//        return bookingDao.findById(bookingId).map(existingBooking -> {
-//            existingBooking.setCheckin(updatedBooking.getCheckin());
-//            existingBooking.setCheckout(updatedBooking.getCheckout());
-//            existingBooking.setStatus(updatedBooking.getStatus());
-//            return bookingDao.save(existingBooking);
-//        }).orElseThrow(() -> new RuntimeException("Booking not found with id: " + bookingId));
-//    }
-//
-//    
-//    public void deleteBooking(Long bookingId) {
-//        bookingDao.deleteById(bookingId);
-//    }
-//}

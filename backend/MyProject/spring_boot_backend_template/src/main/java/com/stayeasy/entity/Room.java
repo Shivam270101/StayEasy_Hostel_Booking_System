@@ -27,32 +27,32 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Room {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-private Long room_id;
-	private String roomnumber;
-	
-	 @ManyToOne(fetch = FetchType.LAZY, optional = false)
-	    @JoinColumn(name = "hostel_id", nullable = false)
-	    private Hostel hostel;
-	 
-private int sharing;
-
-@Column(name="Price",nullable=false)
-private double price;
-
-@Column(name="Available",nullable=false,columnDefinition = "TINYINT(1)")
-private boolean available;
-
-@ManyToMany
-@JoinTable(
-    name = "room_users",
-    joinColumns = @JoinColumn(name = "room_id"),
-    inverseJoinColumns = @JoinColumn(name = "user_id")
-)
-private List<User> users;
-
-//@OneToMany(mappedBy = "room",cascade = CascadeType.ALL)
-//private List<User> users;
+			@Id
+			@GeneratedValue(strategy=GenerationType.IDENTITY)
+			private Long room_id;
+			private String roomnumber;
+			
+			 @ManyToOne(fetch = FetchType.LAZY, optional = false)
+			    @JoinColumn(name = "hostel_id", nullable = false)
+			    private Hostel hostel;
+			 
+			 private int sharing;
+		
+			 @Column(name="Price",nullable=false)
+			 private double price;
+			
+			 @Column(name="Available",nullable=false,columnDefinition = "TINYINT(1)")
+			 private boolean available;
+		
+			 @ManyToMany
+			 @JoinTable(
+			    name = "room_users",
+			    joinColumns = @JoinColumn(name = "room_id"),
+			    inverseJoinColumns = @JoinColumn(name = "user_id")
+			 )
+			 private List<User> user;
+		
+			@OneToMany(mappedBy = "room",cascade = CascadeType.ALL)
+			private List<User> users;
 
 }

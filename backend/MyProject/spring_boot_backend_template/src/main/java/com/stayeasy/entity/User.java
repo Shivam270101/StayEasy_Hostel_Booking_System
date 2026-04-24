@@ -30,58 +30,57 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class User implements UserDetails{
+public class User implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long user_id;
-	
+	@Column(name = "user_id")
+	private Long userId;
+
 	private String FirstName;
-	
+
 	private String LastName;
-	
-	@Column(name="Email",nullable=false,unique=true)
+
+	@Column(name = "Email", nullable = false, unique = true)
 	private String email;
-	
-	   @Enumerated(EnumType.STRING)
-	@Column(name="UserType",nullable=false)
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "UserType", nullable = false)
 	private UserType usertype;
-	   
-	@Column(name="Password",nullable=false)
+
+	@Column(name = "Password", nullable = false)
 	private String password;
-	
-//	@Column(name="Confirm_Password",nullable=false)
-//	private String confirmpassword;
-	
-	@Column(name="PhoneNo",nullable=false)
+
+	// @Column(name="Confirm_Password",nullable=false)
+	// private String confirmpassword;
+
+	@Column(name = "PhoneNo", nullable = false)
 	private String phoneno;
-	
-	
-	
-	 @OneToOne(cascade = CascadeType.ALL)
-	    @JoinColumn(name = "location_id", referencedColumnName = "location_id")
-	    private UserLocation location;
-	   
-	   @ManyToMany(mappedBy ="users",  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	   @JsonIgnore
-	   private List<Room> sharedrooms;
-	   
-//	   @ManyToOne
-//	    @JoinColumn(name = "hostel_id")
-//	    private Hostel hostel; // Hostels owned by the user (if OWNER)
-	   
-	    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	    @JsonIgnore
-	    private List<Booking> bookings;
-	    
-	    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	    @JsonIgnore
-	    private List<Hostel> ownedHostels;
-	    
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "location_id", referencedColumnName = "location_id")
+	private UserLocation location;
+
+	@ManyToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonIgnore
+	private List<Room> sharedrooms;
+
+	// @ManyToOne
+	// @JoinColumn(name = "hostel_id")
+	// private Hostel hostel; // Hostels owned by the user (if OWNER)
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonIgnore
+	private List<Booking> bookings;
+
+	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonIgnore
+	private List<Hostel> ownedHostels;
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
@@ -94,30 +93,40 @@ public class User implements UserDetails{
 		return email;
 	}
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
 
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
 
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
 
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-	   
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 
+	@Override
+	public String getPassword() {
+		// TODO Auto-generated method stub
+		return password;
+	}
 
-	
-	
-	
+	public Long getUserId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getUsertype() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

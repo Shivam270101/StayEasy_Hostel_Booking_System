@@ -144,7 +144,7 @@ public class HostelService {
                 : Collections.emptyList();
 
         return new HostelResponseDTO(
-            hostel.getOwner().getUser_id(), // Assuming owner is set
+            hostel.getOwner().getUserId(), // Assuming owner is set
             hostel.getHostelname(),
             hostel.getAddress(),
             locationDTO,

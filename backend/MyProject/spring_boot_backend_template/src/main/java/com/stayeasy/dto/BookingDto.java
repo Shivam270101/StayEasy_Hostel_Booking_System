@@ -27,17 +27,37 @@ import lombok.Setter;
 @AllArgsConstructor
 public class BookingDto {
 
-private Long room_id;
+private Long roomId;
 	
-private Long hostel_id;
+private Long hostelId;
 
-private Long user_id;
+private Long userId;
 
 @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 private LocalDateTime checkin;
 
 @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 private LocalDateTime checkout;
-private String bookstatus; 
+private String bookstatus;
+public Long getUserId() {
+	
+	return userId;
+}
+public Long getRoomId() {
+	// TODO Auto-generated method stub
+	return null;
+}
+public Long getHostelId() {
+	// TODO Auto-generated method stub
+	return null;
+}
+public Object getCheckin() {
+	// TODO Auto-generated method stub
+	return null;
+}
+public Object getCheckout() {
+	// TODO Auto-generated method stub
+	return null;
+} 
 	
 }
